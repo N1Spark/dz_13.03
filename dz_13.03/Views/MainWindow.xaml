@@ -1,0 +1,38 @@
+﻿<Window x:Class="dz_13._03.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dz_13._03"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="470" Width="479">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit" Command="{Binding ExitApp}" />
+            </MenuItem>
+            <MenuItem Header="_Options">
+                <MenuItem Header="Добавить автора" Command="{Binding AddAuthorCommand}"/>
+                <MenuItem Header="Удалить автора" Command="{Binding DeleteAuthor}" />
+                <MenuItem Header="Редактировать автора" Command="{Binding EditAuthorMenu}" />
+                <MenuItem Header="Добавить книгу" Command="{Binding AddBookWindow}"/>
+                <MenuItem Header="Удалить книгу" Command="{Binding DeleteBook}"/>
+                <MenuItem Header="Редактировать книгу" Command="{Binding EditBookWindow}"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel Margin="0, 15, 0, 0" Grid.Row="1">
+            <ComboBox ItemsSource="{Binding AuthorList}" IsSynchronizedWithCurrentItem="True" SelectedIndex="{Binding  Index_selected_author}" Width ="440">
+            </ComboBox>
+            <ListBox ItemsSource="{Binding BookList, Mode=TwoWay}" IsSynchronizedWithCurrentItem="True" SelectedIndex="{Binding  Index_selected_book}" Margin="0, 20, 0,0" Width ="440" Height="300">
+            </ListBox>
+            <CheckBox IsChecked="{Binding FilterByAuthor, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,20,0,0" >Фильтрация</CheckBox>
+        </StackPanel>
+        
+    </Grid>
+</Window>
